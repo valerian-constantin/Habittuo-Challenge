@@ -90,8 +90,9 @@ struct ContentView: View {
                     
                 }.toolbar {
                     if !store.activities.isEmpty {
-                        ToolbarItem(placement: .topBarLeading) {
+                        ToolbarItemGroup(placement: .topBarLeading) {
                             EditButton()
+                            
                         }
                     }
                     

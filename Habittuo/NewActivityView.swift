@@ -15,6 +15,10 @@ struct NewActivityView: View {
         NavigationStack {
             VStack {
                 Form {
+                    
+                    Section("Name") {
+                        TextField("Enter name", text: $newActivity.name, axis: .vertical).lineLimit(1...2)
+                    }
                    
                     Section("Description") {
                         TextField("Enter description", text: $newActivity.description, axis: .vertical).lineLimit(1...6)
