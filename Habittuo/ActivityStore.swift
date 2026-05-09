@@ -10,6 +10,16 @@ import Observation
 
 @Observable
 class ActivityStore {
+    init() {
+        if let savedActivities = UserDefaults.standard.data(forKey: "Activities") {
+            if let decodedActivities = try? JSONDecoder().decode([Activity].self, from: savedActivities) {
+                activities = decodedActivities
+                return
+            }
+        }
+        activities = []
+    }
+    
     var activities = [Activity]() {
         didSet {
             if let encoded = try? JSONEncoder().encode(activities) {
