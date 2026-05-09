@@ -16,12 +16,14 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Spacer().frame(width: 10, height: 10)
                 Group {
                     ZStack {
                         
                             
                        
                             List {
+                                
                                 ForEach(store.activities, id: \.id) { item in
                                     NavigationLink {
                                         ActivityView(activity: item, store: store)
@@ -34,6 +36,19 @@ struct ContentView: View {
                                             Text("\(item.CompletionCount) completions").fontWeight(.bold)
                                         }
                                        
+                                    }.contextMenu {
+                                        NavigationLink {
+                                           
+                                                ActivityView(activity: item, store: store)
+                                                
+                                            
+                                        } label: {
+                                            Label("Description", systemImage: "text.alignleft")
+                                            
+                                            
+                                            
+                                        }
+                                        Text("\(item.description)")
                                     }
                                     
                                     
@@ -82,7 +97,7 @@ struct ContentView: View {
                         NavigationLink {
                             NewActivityView(store: store)
                         } label: {
-                            Text("Add")
+                            Image(systemName: "plus")
                         }
                     
                         
